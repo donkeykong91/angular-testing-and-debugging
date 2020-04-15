@@ -1,5 +1,6 @@
 class XyzWebStorageService {
-    get (key: string) {
+
+    get(key: string) {
         return window.localStorage.getItem(key);
     }
 
