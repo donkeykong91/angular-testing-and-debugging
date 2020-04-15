@@ -1,4 +1,4 @@
-class XyzWebStorageService {
+export class XyzWebStorageService {
 
     get(key: string) {
         return window.localStorage.getItem(key);
