@@ -13,10 +13,10 @@ export class XyzUserListComponent implements OnInit {
   filter: string;
   users: User[];
   settings: {
-    _id: string,
-    _rev: string,
-    rev: string,
-    filter: string
+    _id: string;
+    _rev: string;
+    rev: string;
+    filter: string;
   }
 
   constructor(
@@ -28,9 +28,11 @@ export class XyzUserListComponent implements OnInit {
   ngOnInit() {
     this.xyzWebStorageService.getRemote().subscribe(response => {
       this.settings = response;
+      // console.log(this.settings);
       this.filter = this.settings.filter;
+
       this.xyzUserListService.get().then(users => {
-        this.users = this.xyzFilterByService.get({data: users, filter: this.filter});
+        this.users = this.xyzFilterByService.get({ data: users, filter: this.filter });
       });
     })
 
@@ -40,7 +42,7 @@ export class XyzUserListComponent implements OnInit {
     this.filter = filter;
     this.xyzUserListService.get().then(users => {
       this.users = this.xyzFilterByService.get({ data: users, filter: filter });
-    });
+    })
   }
 
   onClear() {
