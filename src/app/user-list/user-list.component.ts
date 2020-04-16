@@ -36,7 +36,7 @@ export class XyzUserListComponent implements OnInit {
       });
     }, error => {
       let output = error;
-      console.error('ngOnInit Error: ', output);
+      console.error('ngOnInit Error:', output)
     })
 
   }
