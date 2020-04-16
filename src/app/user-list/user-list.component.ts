@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { XyzWebStorageService } from '../shared/web-storage.service';
 
 import { XyzFilterByService } from '../shared/filter-by.service';
 import { XyzUserListService } from './user-list.service';
 
 @Component({
   selector: 'xyz-user-list',
-  providers: [ XyzFilterByService, XyzUserListService ],
+  providers: [ XyzFilterByService, XyzUserListService, XyzWebStorageService ],
   templateUrl: 'user-list.component.html'
 })
 export class XyzUserListComponent implements OnInit {
@@ -14,7 +15,8 @@ export class XyzUserListComponent implements OnInit {
 
   constructor(
     private xyzUserListService: XyzUserListService,
-    private xyzFilterByService: XyzFilterByService
+    private xyzFilterByService: XyzFilterByService,
+    private xyzWebStorageService: XyzWebStorageService,
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,7 @@ export class XyzUserListComponent implements OnInit {
     this.filter = filter;
     this.xyzUserListService.get().then(users => {
       this.users = this.xyzFilterByService.get({ data: users, filter: filter });
-    })
+    });
   }
 
   onClear() {
