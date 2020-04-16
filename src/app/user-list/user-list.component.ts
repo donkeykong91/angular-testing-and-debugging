@@ -16,7 +16,7 @@ export class XyzUserListComponent implements OnInit {
   constructor(
     private xyzUserListService: XyzUserListService,
     private xyzFilterByService: XyzFilterByService,
-    private xyzWebStorageService: XyzWebStorageService,
+    private xyzWebStorageService: XyzWebStorageService
   ) { }
 
   ngOnInit() {
