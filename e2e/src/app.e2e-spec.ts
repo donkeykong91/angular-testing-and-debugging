@@ -1,31 +1,29 @@
-import { browser, element, by } from 'protractor';
+import {UserListAppPage} from './app.po';
 
 describe('User List App', () => {
+  let userListAppPage = new UserListAppPage();
 
+  
   beforeEach(() => {
-    browser.get('/dashboard');
+    userListAppPage.navigateTo();
   })
 
   it('should have a title', () => {
-    let header = by.css('h2');
-    let title = element(header).getText();
+    let title = userListAppPage.getTitle();
 
     expect(title).toBe('Users Online Now');
   })
 
   it('should have an unordered list', () => {
-    let list = by.css('ul');
-    let listElement = element(list).isPresent();
+    let listElement = userListAppPage.getUnorderedList();
 
     expect(listElement).toBeTruthy();
   })
 
   it('should have 16 users in the default list', () => {
     let total = 16;
-    let button = by.css('button');
-    let item = by.css('li');
-    let clearButton = element(button);
-    let users = element.all(item);
+    let clearButton = userListAppPage.getClearButton();
+    let users = userListAppPage.getUsers();
 
     clearButton.click();
 
