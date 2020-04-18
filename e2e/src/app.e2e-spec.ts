@@ -1,10 +1,10 @@
-import {browser, element, by} from 'protractor';
+import { browser, element, by } from 'protractor';
 
-describe('user list app', () => {
+describe('User List App', () => {
 
   beforeEach(() => {
     browser.get('/dashboard');
-  });
+  })
 
   it('should have a title', () => {
     let header = by.css('h2');
@@ -15,10 +15,10 @@ describe('user list app', () => {
 
   it('should have an unordered list', () => {
     let list = by.css('ul');
-    let listElement = element(list).isPresentd();
+    let listElement = element(list).isPresent();
 
     expect(listElement).toBeTruthy();
-  });
+  })
 
   it('should have 16 users in the default list', () => {
     let total = 16;
@@ -29,6 +29,6 @@ describe('user list app', () => {
 
     clearButton.click();
 
-    expect(users.count().toBe(total));
+    expect(users.count()).toBe(total);
   })
-});
+})
