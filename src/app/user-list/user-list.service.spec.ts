@@ -1,16 +1,21 @@
 import { XyzUserListService } from './user-list.service';
 
+import { TestBed, async, inject} from '@angular/core/testing';
+
 describe('XyzUserListService', () => {
     let service: XyzUserListService;
 
-    beforeEach(() => {
-        service = new XyzUserListService();
-    })
-
-    it('should return a User List with 16 users', (done) => {
-        service.get().then(response => {
-            expect(response.length).toBe(16);
-            done();
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            providers: [XyzUserListService]
         })
-    })
+    }));
+
+    it('should return a User List with 16 users', async(
+        inject([ XyzUserListService ], (service: XyzUserListService) => {
+            service.get().then(response => {
+                expect(response.length).toBe(16);   
+            })
+        })
+    ))
 })
