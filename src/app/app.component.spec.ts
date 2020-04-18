@@ -1,19 +1,19 @@
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { XyzUserListComponent } from './user-list/user-list.component';
+import { XyzUserListComponent }  from './user-list/user-list.component';
 
 import { XyzErrorHandlerService } from './shared/error-handler.service';
 
-import {TestBed, ComponentFixture} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
-
-import {APP_BASE_HREF} from '@angular/common';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('AppComponent', () => {
     let component: ComponentFixture<AppComponent>;
@@ -22,17 +22,17 @@ describe('AppComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ BrowserModule, FormsModule, HttpClientModule, routing ],
+            imports: [ BrowserModule, FormsModule, HttpModule, routing ],
             declarations: [ AppComponent, XyzUserListComponent ],
             providers: [
-                {provide: APP_BASE_HREF, useValue: '/'}
+                { provide: APP_BASE_HREF, useValue: '/' }
             ]
         })
 
         component = TestBed.createComponent(AppComponent);
-    });
+    })
 
-    it('should have a new title', () => {
+    it('should have a title', () => {
         let title = 'Users Online Now';
 
         component.detectChanges();
@@ -40,6 +40,5 @@ describe('AppComponent', () => {
         html = element.nativeElement;
 
         expect(html.innerText).toBe(title);
-    });
-
+    })
 })
